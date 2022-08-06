@@ -9,16 +9,11 @@ class App extends Component {
     cont: 0
   }
   
-  mudarNome = ()=>{
-    this.setState({name: 'Kurz', cont: 0});
-  }
+  changeName = ()=>{
+    const {name} = this.state;
 
-  // voltarNome = ()=>{
-  //   const voltarNome = document.getElementById('#voltarNome');
-  //   voltarNome.addEventListener('click', ()=>{
-  //     this.setState({name: 'Nícolas', cont: 0});
-  //   });
-  // }
+    (name === 'Nícolas' ? this.setState({name: 'Kurz', cont: 0}) : this.setState({name: 'Nícolas', cont: 0}));
+  }
 
   increment = ()=>{
     const {cont} = this.state;
@@ -29,10 +24,8 @@ class App extends Component {
     const {cont} = this.state;
     this.setState({cont: cont-1});
   }
-  
 
   render() {
-
     const {name, cont} = this.state;
 
     return (
@@ -42,16 +35,13 @@ class App extends Component {
           <p>
             Hello world!
           </p>
-          <p  onClick={this.mudarNome}>
+          <p onClick={this.changeName}>
             {name} {cont}
           </p>
-          {/* <button id='voltarNome' type="button" class="btn btn-outline-info btn_met" onClick={this.voltarNome}>
-            Reset name
-          </button> */}
-          <button type="button" class="btn btn-outline-info btn_met" onClick={this.increment}>
+          <button type="button" className="btn btn-outline-info btn_met" onClick={this.increment}>
             Value Up
           </button>
-          <button type="button" class="btn btn-outline-info btn_met" onClick={this.decrement}>
+          <button type="button" className="btn btn-outline-info btn_met" onClick={this.decrement}>
             Value Down
           </button>
         </header>
@@ -59,6 +49,5 @@ class App extends Component {
     );  
   }
 }
-
 
 export default App;
