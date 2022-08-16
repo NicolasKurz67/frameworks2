@@ -5,11 +5,11 @@ import { Component } from 'react';
 class App extends Component {
   
   state = {
-    data:{
-      name: 'Nícolas',
-      cont: 0
-    },
-
+    name: 'Nícolas',
+    count:0,
+    
+    cont: 0,
+    
     posts:[
       {
         id: 1,
@@ -31,22 +31,45 @@ class App extends Component {
   
   changeName = ()=>{
     const {name} = this.state;
-    (name === 'Nícolas' ? this.setState({name: 'Kurz', cont: 0}) : this.setState({name: 'Nícolas', cont: 0}));
+    (name === 'Nícolas' ? this.setState({name: 'Kurz', count: 0}) : this.setState({name: 'Nícolas', count: 0}));
   }
 
   increment = ()=>{
-    const {cont} = this.state;
-    this.setState({cont: cont+1});
+    const {count} = this.state;
+    this.setState({count: count+1});
   }
 
   decrement = ()=>{
-    const {cont} = this.state;
-    this.setState({cont: cont-1});
+    const {count} = this.state;
+    this.setState({count: count-1});
   }
 
+  timeoutUpdate = null;
+
+  componentDidMount() {
+    this.changeTimeout();
+  }
+  
+  componentDidUpdate() {
+    this.changeTimeout();
+  }
+
+  componentWillUnmount () { 
+    clearTimeout(this.timeoutUpdate);
+  }
+
+  changeTimeout = ()=>{
+    const {posts, cont} = this.state;
+    posts[0].title = 'This title changed';
+  
+    this.timeoutUpdate = setTimeout(()=>{
+      this.setState({posts, cont: cont+1});
+    }, 2000);
+  };
+
   render() {
-    const {name, cont} = this.state;
-    const {posts} = this.state;
+    const {name, count} = this.state;
+    const {posts, cont} = this.state;
 
     return (
       <div className="MyApp">
@@ -56,7 +79,7 @@ class App extends Component {
             Hello world!
           </p>
           <p onClick={this.changeName}>
-            {name} {cont}
+            {name} {count}
           </p>
           <button type="button" className="btn btn-outline-info btn_met" onClick={this.increment}>
             Value Up
@@ -64,16 +87,18 @@ class App extends Component {
           <button type="button" className="btn btn-outline-info btn_met" onClick={this.decrement}>
             Value Down
           </button>
+        
+          <div className="App">
+            <h1> {cont} </h1>
+            { posts.map(post => (
+              <div key={post.id}>
+                <h1> {post.title} </h1>
+                <p> {post.content} </p>
+              </div>
+            ))}
+          </div>
+          
         </header>
-        <div className="container">
-          { posts.map(post => (
-            <div key={post.id}>
-              <h1> {post.title} </h1>
-              <p> {post.content} </p>
-            </div>
-          ))}
-
-        </div>
       </div>
     );  
   }
