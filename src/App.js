@@ -75,10 +75,7 @@ class App extends Component {
       <div className="MyApp">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hello world!
-          </p>
-          <p onClick={this.changeName}>
+          <p className="alert alert-dark alt_rad" role="alert" onClick={this.changeName}>
             {name} {count}
           </p>
           <button type="button" className="btn btn-outline-info btn_met" onClick={this.increment}>
@@ -88,7 +85,7 @@ class App extends Component {
             Value Down
           </button>
         
-          <div className="App">
+          <div className="App mt">
             <h1> {cont} </h1>
             { posts.map(post => (
               <div key={post.id}>
@@ -96,8 +93,7 @@ class App extends Component {
                 <p> {post.content} </p>
               </div>
             ))}
-          </div>
-          
+          </div>          
         </header>
       </div>
     );  
