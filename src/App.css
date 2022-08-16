@@ -40,3 +40,10 @@
 .btn_met {
   margin: 1rem;
 }
+
+.alt_rad {
+  border-radius: 50px;
+  padding: 20px;
+  width: 20vh;
+  text-align: center;
+}
