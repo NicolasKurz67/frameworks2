@@ -5,13 +5,32 @@ import { Component } from 'react';
 class App extends Component {
   
   state = {
-    name: 'Nícolas',
-    cont: 0
+    data:{
+      name: 'Nícolas',
+      cont: 0
+    },
+
+    posts:[
+      {
+        id: 1,
+        title: 'Title 1',
+        content: 'Content 1'
+      },
+      {
+        id: 2,
+        title: 'Title 2',
+        content: 'Content 2'
+      },
+      {
+        id: 3,
+        title: 'Title 3',
+        content: 'Content 3'
+      }
+    ]
   }
   
   changeName = ()=>{
     const {name} = this.state;
-
     (name === 'Nícolas' ? this.setState({name: 'Kurz', cont: 0}) : this.setState({name: 'Nícolas', cont: 0}));
   }
 
@@ -27,6 +46,7 @@ class App extends Component {
 
   render() {
     const {name, cont} = this.state;
+    const {posts} = this.state;
 
     return (
       <div className="MyApp">
@@ -45,6 +65,15 @@ class App extends Component {
             Value Down
           </button>
         </header>
+        <div className="container">
+          { posts.map(post => (
+            <div key={post.id}>
+              <h1> {post.title} </h1>
+              <p> {post.content} </p>
+            </div>
+          ))}
+
+        </div>
       </div>
     );  
   }
