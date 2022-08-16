@@ -73,13 +73,13 @@ class App extends Component {
       <div className="MyApp">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p className="alert alert-dark alt_rad" role="alert" onClick={this.changeName}>
+          <p className="alert alert-dark alt_rad font-weight-bold" role="alert" onClick={this.changeName}>
             {name} {count}
           </p>
-          <button type="button" className="btn btn-outline-info btn_met" onClick={this.increment}>
+          <button type="button" className="btn btn-outline-info btn_met alt_rad font-weight-bold alt_rad_fnt" onClick={this.increment}>
             Value Up
           </button>
-          <button type="button" className="btn btn-outline-info btn_met" onClick={this.decrement}>
+          <button type="button" className="btn btn-outline-info btn_met alt_rad font-weight-bold alt_rad_fnt" onClick={this.decrement}>
             Value Down
           </button>        
           <div className="App mt">
