@@ -6,10 +6,8 @@ class App extends Component {
   
   state = {
     name: 'Nícolas',
-    count:0,
-    
+    count:0,    
     cont: 0,
-    
     posts:[
       {
         id: 1,
