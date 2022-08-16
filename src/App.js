@@ -83,8 +83,7 @@ class App extends Component {
           </button>
           <button type="button" className="btn btn-outline-info btn_met" onClick={this.decrement}>
             Value Down
-          </button>
-        
+          </button>        
           <div className="App mt">
             <h1> {cont} </h1>
             { posts.map(post => (
